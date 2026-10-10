@@ -266,7 +266,7 @@ if (!function_exists('language_switch_get_languages')) {
             $code,
             $code,
             $class === '' ? '' : ' class="' . $class . '"',
-            $code == $current ? ' aria-current="true"' : '',
+            $code === $current ? ' aria-current="true"' : '',
             $icon,
             htmlspecialchars(language_switch_name($code)),
         );
@@ -284,7 +284,7 @@ if (!function_exists('language_switch_get_languages')) {
         $items = '';
 
         foreach ($languages as $code) {
-            $class = 'dropdown-item d-flex align-items-center gap-2' . ($code == $current ? ' active' : '');
+            $class = 'dropdown-item d-flex align-items-center gap-2' . ($code === $current ? ' active' : '');
             $items .= "\n        <li>" . language_switch_link($code, $current, $class) . '</li>';
         }
 
@@ -387,9 +387,9 @@ if (!function_exists('language_switch_get_languages')) {
         $prefix = 'LANGUAGE_SWITCH_HELP_' . $name;
         $section = ['type' => $type, 'title' => $words[$prefix . '_TITLE'] ?? '', 'items' => []];
 
-        for ($n = 1; isset($words[$prefix . ($type == 'faq' ? '_Q_' : '_') . $n]); $n++) {
+        for ($n = 1; isset($words[$prefix . ($type === 'faq' ? '_Q_' : '_') . $n]); $n++) {
             $section['items'][] =
-                $type == 'faq'
+                $type === 'faq'
                     ? ['q' => $words[$prefix . '_Q_' . $n], 'a' => $words[$prefix . '_A_' . $n] ?? '']
                     : $words[$prefix . '_' . $n];
         }
